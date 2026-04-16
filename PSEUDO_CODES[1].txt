@@ -1,0 +1,40 @@
+function infixToPostfix(expression):
+    create empty stack
+    create empty result
+
+    for each character ch in expression:
+        if ch is operand:
+            add ch to result
+
+        else if ch is '(':
+            push ch to stack
+
+        else if ch is ')':
+            while top of stack != '(':
+                pop and add to result
+            pop '('
+
+        else if ch is operator:
+            while stack not empty AND precedence(top) >= precedence(ch):
+                pop and add to result
+            push ch to stack
+
+    while stack not empty:
+        pop and add to result
+
+    return result
+
+Infix → Prefix
+function infixToPrefix(exp):
+
+    reverse exp
+
+    for each character in exp:
+        if '(' change to ')'
+        if ')' change to '('
+
+    postfix = infixToPostfix(exp)
+
+    prefix = reverse(postfix)
+
+    return prefix
